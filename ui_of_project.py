@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import io
 import plotly.graph_objects as go
 
 # Updated CSS
@@ -87,6 +88,19 @@ if file:
   st.write(df.head())
   st.subheader("Tail Data")
   st.write(df.tail())
+
+if file:
+    st.subheader("Dataset Shape")
+    st.write(df.shape)
+
+if file:
+    st.subheader("Dataset Info")
+    buffer = io.StringIO()
+    df.info(buf=buffer)
+    s = buffer.getvalue()
+    
+    st.text(s)
+
 
 # Visualization of graphs
 if file is not None:
@@ -225,5 +239,122 @@ if file is not None:
 else:
     st.warning("Please upload a valid file to visualize industrial emissions.")
 
+#5th Chart
+if file is not None:
+    st.subheader("HeatMap: Correlation with Total Emission")
+
+    # Select relevant columns for correlation analysis
+    columns_to_check = [
+        "total_emission",
+        "Rural population",
+        "Urban population",
+        "Total Population - Male",
+        "Total Population - Female",
+        "On-farm energy use"
+    ]
+
+    # Compute correlation matrix
+    corr_df = df[columns_to_check].corr()
+
+    # Create heatmap using Plotly Express
+    fig = px.imshow(
+        corr_df,
+        text_auto=True,
+        title="Correlation with Total Emission",
+        width=800,
+        height=700
+    )
+
+    # Display chart in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
+else:
+    st.warning("Please upload a valid file to explore correlation patterns.")
+
+#6th Chart
+if file is not None:
+    st.subheader("SunBurst Chart: Gender-wise Population Distribution Across TOP 500 Areas")
+
+    # Step 1: Compute total population
+    df["Total Population"] = df["Total Population - Male"] + df["Total Population - Female"]
+
+    # Step 2: Select top 500 areas based on total population
+    top500_df = df.sort_values("Total Population", ascending=False).head(500)
+
+    # Step 3: Melt the data into long format for gender analysis
+    population_melted = top500_df[[
+        "Area", 
+        "Total Population - Male", 
+        "Total Population - Female"
+    ]].melt(
+        id_vars="Area",
+        var_name="Gender",
+        value_name="Population"
+    )
+
+    # Step 4: Create sunburst chart using Plotly Express
+    fig = px.sunburst(
+        population_melted,
+        path=["Area", "Gender"],
+        values="Population",
+        title="Top 500 Population Records by Area and Gender"
+    )
+
+    # Step 5: Customize layout
+    fig.update_layout(
+        width=900,
+        height=600,
+        title_x=0.5
+    )
+
+    # Step 6: Render chart in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
+else:
+    st.warning("Please upload a valid file to visualize gender-wise population distribution.")
+
+#7th Chart
+if file is not None:
+    st.subheader("Scatter Plot: Top 20 Areas by Agricultural Emissions")
+
+    # Step 1: Calculate total agricultural emission
+    df["Agri_total_Emission"] = (
+        df["Pesticides Manufacturing"] +
+        df["Fertilizers Manufacturing"] +
+        df["Food Transport"]
+    )
+
+    # Step 2: Select top 40 areas with the lowest total emissions
+    top40_df = df.sort_values("Agri_total_Emission", ascending=True).head(40).reset_index()
+
+    # Step 3: Create scatter plot with bubble size based on transport emissions
+    fig = px.scatter(
+        top40_df,
+        x="Pesticides Manufacturing",
+        y="Fertilizers Manufacturing",
+        size="Food Transport",       # Bubble size
+        color="Area",                # Distinct color per area
+        hover_name="Area",           # Tooltip info
+        title="Top 40 Areas by Agricultural Emissions",
+        labels={
+            "Pesticides Manufacturing": "Pesticides CO₂ (kt)",
+            "Fertilizers Manufacturing": "Fertilizers CO₂ (kt)",
+            "Food Transport": "Transport CO₂ (kt)"
+        }
+    )
+
+    # Step 4: Update layout for better display
+    fig.update_layout(
+        width=1000,
+        height=500,
+        title_x=0.3
+    )
+
+    # Step 5: Display chart in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+
+else:
+    st.warning("Please upload a dataset to explore agricultural emission patterns.")
+
+
 # side bar
-st.sidebar.header("Filteration")
