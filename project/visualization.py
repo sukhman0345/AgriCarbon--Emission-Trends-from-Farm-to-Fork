@@ -137,7 +137,7 @@ def show_visualization():
             values="Population",
             title="Top 500 Population Records by Area and Gender"
         )
-        fig.update_layout(width=900, height=600, title_x=0.5)
+        fig.update_layout(width=900, height=600, title_x=0.3)
         st.plotly_chart(fig, use_container_width=True)
 
         st.markdown("---")
@@ -181,5 +181,4 @@ def show_visualization():
 
         
 
-    # side bar
-    st.sidebar.title("side bar")
+ 
