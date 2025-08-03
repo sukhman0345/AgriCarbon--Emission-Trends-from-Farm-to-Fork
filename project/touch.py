@@ -20,7 +20,7 @@ def get_in_touch():
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # IST timestamp
 
         conn = sqlite3.connect("contacts.db")
-        c = conn.cursor() # c is for cursor
+        c = conn.cursor()  # c is for cursor
 
         # Create table if it doesn't exist
         c.execute('''
@@ -38,5 +38,15 @@ def get_in_touch():
                   (name, email, message, feedback_type, timestamp))
         conn.commit()
         conn.close()
+
+        # Footer and links
+        st.markdown("""
+            <p style="text-align: center; color: gray;">
+            Made with ❤️ by sukhman.singh.codes
+            </p>
+        """, unsafe_allow_html=True)
+
+        st.markdown("> [LinkedIn](https://www.linkedin.com/in/sukhman012358)")
+        st.markdown("> [GitHub](https://github.com/sukhman0345)")
 
         st.success("Thanks for your feedback! It's been recorded.")

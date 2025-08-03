@@ -172,9 +172,11 @@ def show_visualization():
         st.markdown("""
 
 <p style="text-align: center; color: gray;">
-    © 2025 sukhman.singh.codes
+    Made with ❤️ by sukhman.singh.codes
 </p>
 """, unsafe_allow_html=True)
+        st.markdown("> [LinkedIn](https://www.linkedin.com/in/sukhman012358)")
+        st.markdown("> [GitHub](https://github.com/sukhman0345)")
 
     else:
         st.warning("Please upload a valid file to visualize emissions data.")
