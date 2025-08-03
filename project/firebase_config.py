@@ -1,7 +1,15 @@
-import firebase_admin
-from firebase_admin import credentials, auth
+import pyrebase
 
-# Prevent re-initializing the Firebase app
-if not firebase_admin._apps:
-    cred = credentials.Certificate("serviceAccountKey.json")
-    firebase_admin.initialize_app(cred)
+firebaseConfig = {
+  "apiKey": "AIzaSyAlkc10SGmFFL5RWdAdRTmQnEsd6TdfkS8",
+  "authDomain": "ds-project-auth.firebaseapp.com",
+  "databaseURL":"https://ds-project-auth-default-rtdb.firebaseio.com/",
+  "projectId": "ds-project-auth",
+  "storageBucket": "ds-project-auth.firebasestorage.app",
+  "messagingSenderId": "649731604012",
+  "appId": "1:649731604012:web:ab2957f003fd1de0565b89",
+  "measurementId": "G-XZ3QFK9PR7"
+}
+
+firebase = pyrebase.initialize_app(firebaseConfig)
+auth = firebase.auth()

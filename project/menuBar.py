@@ -3,23 +3,23 @@ from streamlit_option_menu import option_menu
 from about import show_about
 from visualization import show_visualization
 from touch import get_in_touch
-from signin import signin
-from signup import signup
 
-# Initialize session state
-if "user" not in st.session_state:
-    st.session_state.user = None
+def main_app():
+    # Check if user is logged in
+    if 'user' not in st.session_state:
+        st.warning("Please sign in to continue...")
+        st.stop()
 
-# If user is not logged in
-if st.session_state.user is None:
-    auth_option = st.sidebar.selectbox("Login / Signup", ["Sign In", "Sign Up"])
-    if auth_option == "Sign In":
-        signin()
-    elif auth_option == "Sign Up":
-        signup()
+    # Sidebar logout and user display
+    st.sidebar.markdown("---")
+    st.sidebar.write(f"👤 {st.session_state['user']['email']}")
 
-# If user is logged in
-else:
+    if st.sidebar.button("🚪 Logout"):
+        st.session_state.pop("user", None)
+        st.success("You have been logged out.")
+        st.rerun()
+
+    # Horizontal menu
     selected = option_menu(
         menu_title="Co2 Emission",
         options=["About", "Visualization", "Get In Touch"],
@@ -32,9 +32,7 @@ else:
     # Page Content Based on Selection
     if selected == "About":
         show_about()
-
     elif selected == "Visualization":
         show_visualization()
-
     elif selected == "Get In Touch":
         get_in_touch()

@@ -1,28 +1,42 @@
 import streamlit as st
+from datetime import datetime
+import sqlite3
 
 def get_in_touch():
-  
-   st.markdown("""
-        <div style='text-align: center'>
-            <h1>Get In Touch!</h1>       
-        </div>
-      """, unsafe_allow_html=True)
+    st.title("Get in touch")
 
-   contact_form= """
-    <form action="https://formsubmit.co/sukhmansinghcodes@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="name" placeholder="your name" required>
-      <input type="email" name="email" placeholder="your email" required>
-      <textarea name="message" placeholder="Write your query here"></textarea>
-      <button type="submit">Send</button>
-    </form>
+    # User fields
+    name = st.text_input("Your Name")
+    email = st.text_input("Your Email")
+    message = st.text_input("Your Message")
 
-  """ 
-   st.markdown(contact_form, unsafe_allow_html=True) 
+    # For feedback dropdown
+    feedback_type = st.selectbox(
+        "Type of Feedback",
+        ["Suggestion", "Bug Report", "Compliment", "Question", "Others"]
+    )
 
-   #inject the css using local css
-   def local_css(file_name):
-      with open(file_name) as f:
-         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    if st.button("Submit"):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # IST timestamp
 
-   local_css("style/style.css")   
+        conn = sqlite3.connect("contacts.db")
+        c = conn.cursor() # c is for cursor
+
+        # Create table if it doesn't exist
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS contacts(
+                name TEXT,
+                email TEXT,
+                message TEXT,
+                feedback_type TEXT,
+                timestamp TEXT
+            )
+        ''')
+
+        # Insert data
+        c.execute("INSERT INTO contacts (name, email, message, feedback_type, timestamp) VALUES(?, ?, ?, ?, ?)",
+                  (name, email, message, feedback_type, timestamp))
+        conn.commit()
+        conn.close()
+
+        st.success("Thanks for your feedback! It's been recorded.")

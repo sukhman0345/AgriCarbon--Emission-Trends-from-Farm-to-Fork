@@ -1,17 +1,18 @@
 import streamlit as st
-from firebase_admin import auth
-import firebase_config 
+from firebase_config import auth
 
 def signup():
-  st.title("Sign Up")
+  st.title("📝 Sign Up")
+  email = st.text_input("📧 Email")
+  password = st.text_input("🔒 Password", type="password")
+  confirm = st.text_input("🔁 Confirm Password", type="password")
 
-  email = st.text_input("Email")
-  password = st.text_input("Password", type="password")
-
-  if st.button("Register"):
-    try:
-      user= auth.create_user(email=email, password=password)
-      st.success("Account created successfully")
-      st.info(f"User ID: {user.uid}")
-    except Exception as e:
-      st.error(f"Error:{e}") 
+  if st.button("🧷 Create Account"):
+    if password != confirm:
+      st.error(" Passwords do not match.")
+    else:
+      try:
+        auth.create_user_with_email_and_password(email, password)
+        st.success("🎉 Account created successfully. Please sign in.")
+      except Exception as e:
+        st.error(f" Error: {e}")
