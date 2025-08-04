@@ -16,3 +16,4 @@ def signup():
         st.success("🎉 Account created successfully. Please sign in.")
       except Exception as e:
         st.error(f" Error: {e}")
+
