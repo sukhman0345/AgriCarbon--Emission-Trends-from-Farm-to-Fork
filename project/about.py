@@ -4,7 +4,7 @@ def show_about():
     # Project Title
     st.markdown("""
         <div style='text-align: center'>
-            <h1>About Project</h1>       
+            <h1> 🌿 Agro CO₂ Emission Dashboard</h1>       
         </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
@@ -13,7 +13,7 @@ def show_about():
     st.image("https://plus.unsplash.com/premium_photo-1664298311043-46b3814a511f?q=80&w=1183&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", caption="Carbon Emission Image")
     st.markdown("""
         <div style='text-align: justify; font-size: 16px; line-height: 1.6'>
-            <h2 style='text-align: center;'>Introduction</h2>
+            <h2 style='text-align: center;'>📘Introduction</h2>
             <p>
                 This project is built on the 
                 <a href="https://www.kaggle.com/datasets/alessandrolobello/agri-food-co2-emission-dataset-forecasting-ml" target="_blank">
@@ -41,7 +41,7 @@ def show_about():
     # Dataset Features Section Title
     st.markdown("""
         <div style='text-align: center'>
-            <h2>Dataset Features</h2>       
+            <h2>📊Dataset Features</h2>       
         </div>
     """, unsafe_allow_html=True)
 
@@ -83,7 +83,7 @@ def show_about():
     # Data Scope
     st.markdown("""
         <div style='text-align: center'>
-            <h2>Data Analysis Scope</h2>       
+            <h2>📌Data Analysis Scope</h2>       
         </div>
     """, unsafe_allow_html=True)
 
@@ -102,7 +102,7 @@ def show_about():
     # Geographical and Temporal Coverage
     st.markdown("""
         <div style='text-align: center'>
-            <h2>Geographic and Temporal Coverage</h2>       
+            <h2>🌍 Geographic and Temporal Coverage</h2>       
         </div>
     """, unsafe_allow_html=True)
 
@@ -120,7 +120,7 @@ def show_about():
     # Future Development
     st.markdown("""
         <div style='text-align: center'>
-            <h2>Future Enhancements</h2>       
+            <h2>🔮Future Enhancements</h2>       
         </div>
     """, unsafe_allow_html=True)
 

@@ -9,12 +9,14 @@ def main_app():
     if 'user' not in st.session_state:
         st.warning("Please sign in to continue...")
         st.stop()
-
+     
     # Sidebar logout and user display
+    st.sidebar.markdown("## 🌿 Agro CO₂ Emission Dashboard")
+
     st.sidebar.markdown("---")
     st.sidebar.write(f"👤 {st.session_state['user']['email']}")
 
-    if st.sidebar.button("🚪 Logout"):
+    if st.sidebar.button("🚪Logout"):
         st.session_state.pop("user", None)
         st.success("You have been logged out.")
         st.rerun()
@@ -22,8 +24,8 @@ def main_app():
     # Horizontal menu
     selected = option_menu(
         menu_title="Co2 Emission",
-        options=["About", "Visualization", "Get In Touch"],
-        icons=["house", "search", "patch-question-fill"],
+        options=["About","Pre-Processing","Visualization", "Get In Touch"],
+        icons=["house","funnel", "search", "patch-question-fill"],
         menu_icon="cast",
         default_index=0,
         orientation="horizontal",

@@ -169,8 +169,6 @@ def show_visualization():
 
         st.markdown("---")
 
-        st.markdown("> [LinkedIn](https://www.linkedin.com/in/sukhman012358)")
-        st.markdown("> [GitHub](https://github.com/sukhman0345)")
         st.markdown("""
 
 <p style="text-align: center; color: gray;">

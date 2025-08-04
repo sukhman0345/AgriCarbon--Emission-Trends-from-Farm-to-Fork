@@ -3,6 +3,7 @@ from datetime import datetime
 import sqlite3
 
 def get_in_touch():
+    st.image("https://images.unsplash.com/uploads/141103282695035fa1380/95cdfeef?q=80&w=1430&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", use_container_width=True)
     st.title("Get in touch")
 
     # User fields
@@ -46,7 +47,5 @@ def get_in_touch():
             </p>
         """, unsafe_allow_html=True)
 
-        st.markdown("> [LinkedIn](https://www.linkedin.com/in/sukhman012358)")
-        st.markdown("> [GitHub](https://github.com/sukhman0345)")
 
         st.success("Thanks for your feedback! It's been recorded.")
