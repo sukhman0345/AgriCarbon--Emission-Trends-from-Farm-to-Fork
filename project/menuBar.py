@@ -3,6 +3,7 @@ from streamlit_option_menu import option_menu
 from about import show_about
 from visualization import show_visualization
 from touch import get_in_touch
+from  preprocessing import show_preprocessing
 
 def main_app():
     # Check if user is logged in
@@ -34,7 +35,10 @@ def main_app():
     # Page Content Based on Selection
     if selected == "About":
         show_about()
+    elif selected == "Pre-Processing":
+         show_preprocessing()    
     elif selected == "Visualization":
         show_visualization()
     elif selected == "Get In Touch":
         get_in_touch()
+        

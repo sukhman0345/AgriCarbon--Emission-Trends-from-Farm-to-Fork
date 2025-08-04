@@ -45,38 +45,45 @@ def show_about():
         </div>
     """, unsafe_allow_html=True)
 
-    # Dataset Feature List
-    st.markdown("""
-    - 🔥 **Savanna Fires**  CO₂ emissions from fires in savanna regions  
-    - 🌲 **Forest Fires**  Emissions from forest fire activity  
-    - 🌾 **Crop Residues**  Emissions from burning or decomposition of leftover crop matter  
-    - 🍚 **Rice Cultivation**  Methane emissions produced during rice farming  
-    - 🧪 **Drained Organic Soils (CO₂)** CO₂ released due to drainage of organic soils  
-    - 🧴 **Pesticides Manufacturing**  Emissions from producing chemical pesticides  
-    - 🚛 **Food Transport**  Emissions from shipping and moving food products  
-    - 🌳 **Forestland**  Forest area acting as a carbon sink (negative emissions)  
-    - 🏞️ **Net Forest Conversion**  Change in forest area due to land use shifts  
-    - 🏠 **Food Household Consumption**  Emissions from food consumed in homes  
-    - 🛒 **Food Retail**  Operational emissions of food retail businesses  
-    - ⚡ **On-Farm Electricity Use**  Energy consumed directly on agricultural farms  
-    - 📦 **Food Packaging**  Emissions from creation and disposal of packaging materials  
-    - 🗑️ **Agrifood Systems Waste Disposal**  Emissions from waste generated in agrifood systems  
-    - 🏭 **Food Processing**  Emissions from industrial food production and treatment  
-    - 🌐 **Fertilizers Manufacturing**  CO₂ released during fertilizer production  
-    - 🏗️ **IPPU**  Emissions from industrial processes and product use  
-    - 🚜 **Manure Applied to Soils**  Emissions from animal manure spread on farmland  
-    - 🐄 **Manure Left on Pasture**  Emissions from grazing livestock manure  
-    - 💩 **Manure Management**  Emissions from handling and storage of animal waste  
-    - 🔥 **Fires in Organic Soils**  Emissions caused by combustion of organic-rich soils  
-    - 🌴 **Fires in Humid Tropical Forests**  CO₂ from wildfires in tropical forest ecosystems  
-    - 💡 **On-Farm Energy Use**  Broader energy footprint of farm operations  
-    - 🧑‍🌾 **Rural Population**  Demographic count of people in rural zones  
-    - 🏙️ **Urban Population**  Population in urbanized regions  
-    - 👨 **Total Population - Male**  Total male population  
-    - 👩 **Total Population - Female**  Total female population  
-    - 🧮 **Total Emission**  Sum of all recorded emissions across features  
-    - 🌡️ **Average Temperature °C**  Annual temperature increase in degrees Celsius  
-    """)
+    # Dataset Feature List in 3x3 layout with spacing
+    features = [
+        ("🔥", "Savanna Fires", "CO₂ emissions from fires in savanna regions"),
+        ("🌲", "Forest Fires", "Emissions from forest fire activity"),
+        ("🌾", "Crop Residues", "Emissions from burning or decomposition of leftover crop matter"),
+        ("🍚", "Rice Cultivation", "Methane emissions produced during rice farming"),
+        ("🧪", "Drained Organic Soils", "CO₂ released due to drainage of organic soils"),
+        ("🧴", "Pesticides Manufacturing", "Emissions from producing chemical pesticides"),
+        ("🚛", "Food Transport", "Emissions from shipping and moving food products"),
+        ("🌳", "Forestland", "Forest area acting as a carbon sink (negative emissions)"),
+        ("🏜️", "Net Forest Conversion", "Change in forest area due to land use shifts"),
+        ("🏠", "Food Household Consumption", "Emissions from food consumed in homes"),
+        ("🛒", "Food Retail", "Operational emissions of food retail businesses"),
+        ("⚡", "On-Farm Electricity Use", "Energy consumed directly on agricultural farms"),
+        ("📦", "Food Packaging", "Emissions from creation and disposal of packaging materials"),
+        ("🗑️", "Agrifood Systems Waste Disposal", "Emissions from waste generated in agrifood systems"),
+        ("🏭", "Food Processing", "Emissions from industrial food production and treatment"),
+        ("🌐", "Fertilizers Manufacturing", "CO₂ released during fertilizer production"),
+        ("🏗️", "IPPU", "Emissions from industrial processes and product use"),
+        ("🚜", "Manure Applied to Soils", "Emissions from animal manure spread on farmland"),
+        ("🐄", "Manure Left on Pasture", "Emissions from grazing livestock manure"),
+        ("💩", "Manure Management", "Emissions from handling and storage of animal waste"),
+        ("🔥", "Fires in Organic Soils", "Emissions caused by combustion of organic-rich soils"),
+        ("🌴", "Fires in Humid Tropical Forests", "CO₂ from wildfires in tropical forest ecosystems"),
+        ("💡", "On-Farm Energy Use", "Broader energy footprint of farm operations"),
+        ("🧑‍🌾", "Rural Population", "Demographic count of people in rural zones"),
+        ("🏙️", "Urban Population", "Population in urbanized regions"),
+        ("👨", "Total Population - Male", "Total male population"),
+        ("👩", "Total Population - Female", "Total female population"),
+        ("🧮", "Total Emission", "Sum of all recorded emissions across features"),
+        ("🌡️", "Average Temperature °C", "Annual temperature increase in degrees Celsius")
+    ]
+
+    # Display features in 3x3 format with spacing
+    for i in range(0, len(features), 3):
+        col1, spacer1, col2, spacer2, col3 = st.columns([1, 0.1, 1, 0.1, 1])
+        for col, (emoji, title, desc) in zip([col1, col2, col3], features[i:i+3]):
+            col.markdown(f"### {emoji} {title}")
+            col.markdown(f"<p style='text-align: justify'>{desc}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
 
@@ -86,7 +93,6 @@ def show_about():
             <h2>📌Data Analysis Scope</h2>       
         </div>
     """, unsafe_allow_html=True)
-
     st.markdown("""
         <p style="text-align: justify;">
             This project focuses on exploratory data analysis of agricultural CO₂ emissions across 
@@ -96,16 +102,14 @@ def show_about():
             insights.
         </p>
     """, unsafe_allow_html=True)
-
     st.markdown("---")
 
-    # Geographical and Temporal Coverage
+    # Geographic and Temporal Coverage
     st.markdown("""
         <div style='text-align: center'>
             <h2>🌍 Geographic and Temporal Coverage</h2>       
         </div>
     """, unsafe_allow_html=True)
-
     st.markdown("""
         <p style="text-align: justify;">
             The dataset spans data from over 150 countries or territories between 1990 and 2020, 
@@ -114,16 +118,14 @@ def show_about():
             allowing for trend analysis and historical comparison.
         </p>
     """, unsafe_allow_html=True)
-
     st.markdown("---")
 
-    # Future Development
+    # Future Enhancements
     st.markdown("""
         <div style='text-align: center'>
             <h2>🔮Future Enhancements</h2>       
         </div>
     """, unsafe_allow_html=True)
-
     st.markdown("""
         <p style="text-align: justify;">
             Planned extensions include integrating machine learning models for temperature variation prediction and anomaly detection. 
@@ -132,8 +134,6 @@ def show_about():
     """, unsafe_allow_html=True)
 
     st.markdown("---")
-
-    # Footer
     st.markdown("""
         <p style="text-align: center; color: gray;">
             Made with ❤️ by sukhman.singh.codes
