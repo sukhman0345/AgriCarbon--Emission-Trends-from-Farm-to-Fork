@@ -3,7 +3,6 @@ from firebase_config import auth
 
 def signup():
   
-  st.image("logo/carbonivoros.png", use_container_width=600)
   st.title("📝 Sign up to The Carbonivore")
   email = st.text_input("📧 Email")
   password = st.text_input("🔒 Password", type="password")
