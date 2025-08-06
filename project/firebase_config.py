@@ -1,7 +1,7 @@
 import pyrebase
 import streamlit as st
 
-#st.write("🔐 Firebase API Key:", st.secrets["firebase"]["apiKey"])
+
 firebaseConfig = {
     "apiKey": st.secrets["firebase"]["apiKey"],
     "authDomain": st.secrets["firebase"]["authDomain"],
