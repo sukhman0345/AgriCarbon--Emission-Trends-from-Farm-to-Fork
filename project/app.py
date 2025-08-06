@@ -1,38 +1,39 @@
 import streamlit as st
 import time
-import os
-import json
+import requests
 from streamlit_lottie import st_lottie
 from signin import signin
 from signup import signup
-from menuBar import main_app  # your dashboard app
+from menuBar import main_app  # dashboard app
 
-# ✅ Load Lottie JSON from file using absolute path
-def load_lottie_animation(path):
-    current_dir = os.path.dirname(__file__)
-    file_path = os.path.join(current_dir, path)
-    with open(file_path, "r") as file:
-        return json.load(file)
+# Function to load Lottie from URL
+def load_lottie_url(url: str):
+    response = requests.get(url)
+    if response.status_code != 200:
+        return None
+    return response.json()
 
-# ✅ Show splash screen on first app load
+# Splash screen function
 def splash_screen():
-    lottie_data = load_lottie_animation("splash_screen.json")  # Change path if inside folder like 'assets/'
-    st_lottie(lottie_data, speed=3, loop=True, quality="high")
+    # Use the Lottie JSON URL
+    lottie_data = load_lottie_url("https://lottie.host/79ebdf46-b5e6-476e-9c27-7f7bff5cf29a/a3lJp1z6tU.json")
+    if lottie_data:
+        st_lottie(lottie_data, speed=1, loop=True, quality="high", height=300)
     st.markdown("<h2 style='text-align:center;'>Loading The Carbonivore...</h2>", unsafe_allow_html=True)
     time.sleep(2)
     st.session_state.splash_done = True
     st.rerun()
 
-# ✅ Main App
+# Main function
 def main():
     if "splash_done" not in st.session_state:
-        splash_screen()
+        splash_screen()  # Show splash on first load
 
     if st.session_state.get('user'):
         main_app()
     else:
-        st.sidebar.title("Login/Signup")
-        auth_choice = st.sidebar.radio("Select Option", ["Login", "Sign Up"])  # Added label for accessibility
+        st.sidebar.title("Login / Signup")
+        auth_choice = st.sidebar.radio("Choose an option:", ["Login", "Sign Up"])
 
         if auth_choice == "Login":
             signin()
