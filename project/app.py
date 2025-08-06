@@ -13,7 +13,7 @@ def load_lottie_animation(path):
        return json.load(file)
    
 def splash_screen():
-    lottie_data = load_lottie_animation("splash_screen.json")
+    lottie_data = load_lottie_animation("project/splash_screen.json")
     st_lottie(lottie_data, speed=3, loop=True, quality="high")
     st.markdown("<h2 style='text-align:center;'>Loading The Carbonivore...</h2>", unsafe_allow_html=True)
     time.sleep(2)
