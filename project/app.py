@@ -16,7 +16,7 @@ def load_lottie_url(url: str):
 # Splash screen function
 def splash_screen():
     # Use the Lottie JSON URL
-    lottie_data = load_lottie_url("https://lottie.host/79ebdf46-b5e6-476e-9c27-7f7bff5cf29a/a3lJp1z6tU.json")
+    lottie_data = load_lottie_url("https://app.lottiefiles.com/animation/8e864dcc-5845-4262-b21e-27a8d1f9d708.json")
     if lottie_data:
         st_lottie(lottie_data, speed=1, loop=True, quality="high", height=300)
     st.markdown("<h2 style='text-align:center;'>Loading The Carbonivore...</h2>", unsafe_allow_html=True)
