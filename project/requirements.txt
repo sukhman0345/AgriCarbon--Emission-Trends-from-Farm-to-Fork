@@ -3,7 +3,7 @@ pandas
 numpy
 scikit-learn
 firebase-admin
-pyrebase
+pyrebase4
 streamlit-lottie
 matplotlib
 seaborn
@@ -11,3 +11,4 @@ plotly
 scipy
 pycryptodome
 setuptools
+gcloud
