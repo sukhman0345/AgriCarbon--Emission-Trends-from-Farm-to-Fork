@@ -24,7 +24,7 @@ def main_app():
 
     # Horizontal menu
     selected = option_menu(
-        menu_title="Co2 Emission",
+        menu_title="The Carbonivore",
         options=["About","Pre-Processing","Visualization", "Get In Touch"],
         icons=["house","funnel", "search", "patch-question-fill"],
         menu_icon="cast",

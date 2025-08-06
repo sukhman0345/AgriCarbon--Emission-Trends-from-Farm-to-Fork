@@ -4,7 +4,7 @@ def show_about():
     # Project Title
     st.markdown("""
         <div style='text-align: center'>
-            <h1> 🌿 Agro CO₂ Emission Dashboard</h1>       
+            <h1> 🌿 The Carbonivore</h1>       
         </div>
     """, unsafe_allow_html=True)
     st.markdown("---")

@@ -14,6 +14,11 @@ def show_preprocessing():
         st.dataframe(df.head())
 
         st.markdown("---")
+        
+        st.subheader("🔎 last 5 Rows of Data")
+        st.dataframe(df.tail())
+
+        st.markdown("---")
 
         st.subheader("📏 Duplicate Rows")
         st.write(f"Total Duplicates: {df.duplicated().sum()}")

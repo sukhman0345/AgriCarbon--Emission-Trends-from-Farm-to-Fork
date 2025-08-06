@@ -51,7 +51,7 @@ def show_visualization():
         animation_frame="Year",
         title="Area-wise Total Emissions"
     )
-    fig.update_layout(title_x=0.5, width=800, height=600)
+    fig.update_layout(title_x=0.3, width=800, height=600)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
@@ -84,7 +84,7 @@ def show_visualization():
         title="Top 10 Areas by Fire-Based Emissions",
         labels={"Emissions": "Emissions (Kilotons)"}
     )
-    fig.update_layout(xaxis_tickangle=-45, width=1100, height=600, title_x=0.5)
+    fig.update_layout(xaxis_tickangle=-45, width=1200, height=600, title_x=0.3)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
@@ -98,7 +98,7 @@ def show_visualization():
         names=ind_emissions.index,
         title=f"Industrial Emission Proportion in {year_df['Year'].max()}"
     )
-    fig.update_layout(title_x=0.3, width=1000, height=500)
+    fig.update_layout(title_x=0.2, width=1000, height=500)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
