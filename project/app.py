@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+import os
 import json
 from streamlit_lottie import st_lottie
 from signin import signin
@@ -8,7 +9,7 @@ from menuBar import main_app  #  dashboard app
 
 # Function to load the Lottie JSON
 def load_lottie_animation(path):
-   with open(path, "r") as file:
+ with open(path, "r") as file:
        return json.load(file)
    
 def splash_screen():
