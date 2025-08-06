@@ -9,8 +9,11 @@ from menuBar import main_app  #  dashboard app
 
 # Function to load the Lottie JSON
 def load_lottie_animation(path):
- with open(path, "r") as file:
-       return json.load(file)
+    current_dir = os.path.dirname(__file__)
+    file_path = os.path.join(current_dir, path)
+    with open(file_path, "r") as file:
+        return json.load(file)
+
    
 def splash_screen():
     lottie_data = load_lottie_animation("splash_screen.json")
