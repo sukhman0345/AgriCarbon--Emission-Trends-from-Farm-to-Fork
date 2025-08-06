@@ -2,7 +2,7 @@ import streamlit as st
 from firebase_config import auth
 
 def signin():
-    st.title("🔐 Sign In")
+    st.title("🔐 Sign in to The Carbonivore")
 
     email = st.text_input("Email").strip()
     password = st.text_input("Password", type="password").strip()

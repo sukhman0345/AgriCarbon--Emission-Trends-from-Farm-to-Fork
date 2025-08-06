@@ -12,7 +12,7 @@ def main_app():
         st.stop()
      
     # Sidebar logout and user display
-    st.sidebar.markdown("## 🌿 Agro CO₂ Emission Dashboard")
+    st.sidebar.markdown("## 🌿 The Carbonivore")
 
     st.sidebar.markdown("---")
     st.sidebar.write(f"👤 {st.session_state['user']['email']}")
