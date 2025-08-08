@@ -17,7 +17,7 @@ def load_lottieurl(url: str):
 # Splash screen
 def splash_screen():
     lottie_data = load_lottieurl(
-        "https://lottie.host/a88b4f1e-bc10-4d78-89bc-39b6b6fd7923/a9d54LJf0Z.json"
+        "https://app.lottiefiles.com/animation/82e74593-06ae-4751-b084-7e0b67b241a4.json"
     )  # Replace with your Lottie animation link
     if lottie_data:
         st_lottie(lottie_data, speed=1, loop=True, quality="high")
