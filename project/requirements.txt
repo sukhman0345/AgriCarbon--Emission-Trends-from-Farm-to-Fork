@@ -11,6 +11,4 @@ plotly
 scipy
 pycryptodome
 setuptools
-gcloud
 streamlit-option-menu
-
