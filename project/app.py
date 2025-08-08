@@ -13,7 +13,7 @@ def load_lottiefile(filepath: str):
 
 # Splash screen
 def splash_screen():
-    lottie_data = load_lottiefile("assets/splash_screen2.json")  # Ensure this file is in the same directory as app.py
+    lottie_data = load_lottiefile("assets/splash.json")  # Ensure this file is in the same directory as app.py
     st_lottie(lottie_data, speed=1, loop=True, quality="high")
     st.markdown("<h2 style='text-align:center;'>Loading The Carbonivore...</h2>", unsafe_allow_html=True)
     time.sleep(1)
