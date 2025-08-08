@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from about import show_about
-from .visualization import show_visualization
+from visualization import show_visualization
 from touch import get_in_touch
 from  preprocessing import show_preprocessing
 
