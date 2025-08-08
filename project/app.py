@@ -7,16 +7,16 @@ from signup import signup
 from menuBar import main_app
 
 # Function to load local Lottie JSON
-def load_lottie_animation(path):
-    with open(path, "r") as file:
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as file:
         return json.load(file)
 
 # Splash screen
 def splash_screen():
-    lottie_data = load_lottie_animation("splash_screen2.json")  # Ensure this file is in the same directory as app.py
+    lottie_data = load_lottiefile("assets/splash_screen2.json")  # Ensure this file is in the same directory as app.py
     st_lottie(lottie_data, speed=1, loop=True, quality="high")
     st.markdown("<h2 style='text-align:center;'>Loading The Carbonivore...</h2>", unsafe_allow_html=True)
-    time.sleep(2)
+    time.sleep(1)
     st.session_state.splash_done = True
     st.rerun()
 
@@ -27,9 +27,9 @@ def main():
     if st.session_state.get('user'):
         main_app()
     else:
-        st.sidebar.title("Login/Signup")
-        auth_choice = st.sidebar.radio("Select", ["Login", "Sign Up"])
-        if auth_choice == "Login":
+        st.sidebar.title("Signin/Signup")
+        auth_choice = st.sidebar.radio("Select", ["Sign In", "Sign Up"])
+        if auth_choice == "Sign In":
             signin()
         else:
             signup()

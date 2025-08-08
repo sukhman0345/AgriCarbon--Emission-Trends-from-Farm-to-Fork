@@ -1,12 +1,21 @@
 import streamlit as st
+from streamlit_lottie import st_lottie
+import json
 from firebase_config import auth
 
+def load_lottiefile(filepath: str):
+  with open(filepath, "r") as f:
+    return json.load(f) 
+
 def signup():
+# Layout: Two columns
+  col1, col2 = st.columns([1,1]) 
   
-  st.title("📝 Sign up to The Carbonivore")
-  email = st.text_input("📧 Email")
-  password = st.text_input("🔒 Password", type="password")
-  confirm = st.text_input("🔁 Confirm Password", type="password")
+  with col1: 
+   st.title("📝 Sign Up")
+   email = st.text_input("📧 Email")
+   password = st.text_input("🔒 Password", type="password")
+   confirm = st.text_input("🔁 Confirm Password", type="password")
 
   if st.button("🧷 Create Account"):
     if password != confirm:
@@ -17,4 +26,8 @@ def signup():
         st.success("🎉 Account created successfully. Please sign in.")
       except Exception as e:
         st.error(f" Error: {e}")
+  with col2:
+    lottie_signup = load_lottiefile("assets/signup.json")
+    st_lottie(lottie_signup, speed=1, reverse=False, loop=True, quality="high")
+
 

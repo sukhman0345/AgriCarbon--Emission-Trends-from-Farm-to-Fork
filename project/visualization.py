@@ -2,16 +2,24 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import json
+from streamlit_lottie import st_lottie
 import io
 
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
 def show_visualization():
-    st.markdown("<h1 style='text-align: center; color: white;'>Visualization</h1>", unsafe_allow_html=True)
+    st.title("📊 Visualization of Data")
+    lottie_preprocessing = load_lottiefile("assets/analytics.json")
+    st_lottie(lottie_preprocessing, speed=1, reverse=False, loop=True, quality="high", width=300, height=300)
 
     # Load CSV directly
     try:
-        df = pd.read_csv("../Agrofood_co2_emission.csv")
+        df = pd.read_csv("../the_Carbonivore.csv")
     except FileNotFoundError:
-        st.error("⚠️ The file 'Agro_CO2_Emission.csv' was not found. Please place it in the same directory as your Streamlit script.")
+        st.error("⚠️ The file 'the_Catbonivore.csv' was not found. Please place it in the same directory as your Streamlit script.")
         return
 
     st.subheader("Data preview")
@@ -51,7 +59,7 @@ def show_visualization():
         animation_frame="Year",
         title="Area-wise Total Emissions"
     )
-    fig.update_layout(title_x=0.3, width=800, height=600)
+    fig.update_layout(title_x=0.3, width=1100, height=700)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
@@ -65,16 +73,16 @@ def show_visualization():
         color="Area",
         title="Rice Cultivation Emissions over Time"
     )
-    fig.update_layout(width=1200, height=500, title_x=0.2)
+    fig.update_layout(width=1100, height=700, title_x=0.2)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
 
     # Bar Chart
-    st.subheader("Bar Chart: Top 10 Areas by Fire-Based Emissions")
+    st.subheader("Bar Chart: Top 50 Areas by Fire-Based Emissions")
     fire_df = df[["Area", "Forest fires", "Savanna fires", "Fires in humid tropical forests"]].groupby("Area").mean().reset_index()
     fire_df["Total Emissions"] = fire_df[["Forest fires", "Savanna fires", "Fires in humid tropical forests"]].sum(axis=1)
-    top_fire_df = fire_df.sort_values("Total Emissions", ascending=False).head(10)
+    top_fire_df = fire_df.sort_values("Total Emissions", ascending=False).head(50)
     fire_melted = top_fire_df.drop(columns="Total Emissions").melt(id_vars="Area", var_name="Fire Type", value_name="Emissions")
     fig = px.bar(
         fire_melted,
@@ -84,7 +92,7 @@ def show_visualization():
         title="Top 10 Areas by Fire-Based Emissions",
         labels={"Emissions": "Emissions (Kilotons)"}
     )
-    fig.update_layout(xaxis_tickangle=-45, width=1200, height=600, title_x=0.3)
+    fig.update_layout(xaxis_tickangle=-45, width=1100, height=600, title_x=0.3)
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("---")
@@ -140,13 +148,13 @@ def show_visualization():
     st.markdown("---")
 
     # Scatter Plot
-    st.subheader("Scatter Plot: Top 20 Areas by Agricultural Emissions")
+    st.subheader("Scatter Plot: Top Mid Areas by Agricultural Emissions")
     df["Agri_total_Emission"] = (
         df["Pesticides Manufacturing"] +
         df["Fertilizers Manufacturing"] +
         df["Food Transport"]
     )
-    top40_df = df.sort_values("Agri_total_Emission", ascending=True).head(40).reset_index()
+    top40_df = df.sort_values("Agri_total_Emission", ascending=True).head(3000).reset_index()
     fig = px.scatter(
         top40_df,
         x="Pesticides Manufacturing",

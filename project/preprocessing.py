@@ -1,14 +1,22 @@
 import streamlit as st
 import pandas as pd
 import os
+import json
+from streamlit_lottie import st_lottie
+
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
 
 def show_preprocessing():
     st.title("🧼 Pre-processing Overview")
+    lottie_preprocessing = load_lottiefile("assets/data_preprocessing.json")
+    st_lottie(lottie_preprocessing, speed=1, reverse=False, loop=True, quality="high", width=300)
 
     st.markdown("---")
 
     try:
-        df = pd.read_csv("../Agrofood_co2_emission.csv")
+        df = pd.read_csv("../the_Carbonivore.csv")
 
         st.subheader("🔎 First 5 Rows of Data")
         st.dataframe(df.head())
