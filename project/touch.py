@@ -12,7 +12,7 @@ def load_lottiefile(filepath: str):
 # Main function to display the Get in Touch form
 def get_in_touch():
     # Load Lottie animation
-    lottie_contact = load_lottiefile("assets/contact us.json")
+    lottie_contact = load_lottiefile("contact us.json")
     st_lottie(
         lottie_contact,
         speed=1,

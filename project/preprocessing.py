@@ -10,7 +10,7 @@ def load_lottiefile(filepath: str):
 
 def show_preprocessing():
     st.title("🧼 Pre-processing Overview")
-    lottie_preprocessing = load_lottiefile("assets/data_preprocessing.json")
+    lottie_preprocessing = load_lottiefile("data_preprocessing.json")
     st_lottie(lottie_preprocessing, speed=1, reverse=False, loop=True, quality="high", width=300)
 
     st.markdown("---")

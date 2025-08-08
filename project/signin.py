@@ -60,5 +60,5 @@ def signin():
 
     with col2:
         # Display Lottie animation
-        lottie_signin = load_lottiefile("assets/signin.json")
+        lottie_signin = load_lottiefile("signin.json")
         st_lottie(lottie_signin, speed=1, reverse=False, loop=True, quality="high")

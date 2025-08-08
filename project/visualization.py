@@ -12,7 +12,7 @@ def load_lottiefile(filepath: str):
 
 def show_visualization():
     st.title("📊 Visualization of Data")
-    lottie_preprocessing = load_lottiefile("assets/analytics.json")
+    lottie_preprocessing = load_lottiefile("analytics.json")
     st_lottie(lottie_preprocessing, speed=1, reverse=False, loop=True, quality="high", width=300, height=300)
 
     # Load CSV directly

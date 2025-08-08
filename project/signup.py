@@ -27,7 +27,7 @@ def signup():
       except Exception as e:
         st.error(f" Error: {e}")
   with col2:
-    lottie_signup = load_lottiefile("assets/signup.json")
+    lottie_signup = load_lottiefile("signup.json")
     st_lottie(lottie_signup, speed=1, reverse=False, loop=True, quality="high")
 
 
