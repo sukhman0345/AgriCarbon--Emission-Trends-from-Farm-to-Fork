@@ -1,7 +1,7 @@
-📊 AgriCarbon: Emission Trends from Farm to Fork
+# 📊 AgriCarbon: Emission Trends from Farm to Fork
 This repository contains the preprocessed dataset derived from FAO and IPCC sources, tracking CO₂ emissions across the agri-food sector.
 
-🌍 Key Features of the Dataset
+# 🌍 Key Features of the Dataset
 Crop Residue Burning
 
 Fertilizer Application
@@ -10,14 +10,14 @@ Food Processing & Transport across regions and years
 
 Fact: Agri-food activities contribute to ~62% of global annual CO₂ emissions.
 
-📌 Use Cases
+# 📌 Use Cases
 Climate impact analysis
 
 Emission forecasting
 
 Sustainability & policy research
 
-🔗 Relation to the Streamlit Project – TheCarbonivore
+# 🔗 Relation to the Streamlit Project – TheCarbonivore
 This dataset serves as the foundation for the interactive Streamlit application, created in a separate repository:
 
 TheCarbonivore Streamlit App Repository:
@@ -30,7 +30,7 @@ TheCarbonivore → Interactive Streamlit dashboard built using this dataset
 
 Project Name: TheCarbonivore
 
-🚀 Running the Streamlit Application
+# 🚀 Running the Streamlit Application
 To explore the interactive dashboard for this dataset:
 
 bash
