@@ -8,7 +8,7 @@ from menuBar import main_app
 
 # Function to load local Lottie JSON
 def load_lottiefile(filepath: str):
-    with open(filepath, "r", encoding="utf-8") as file:
+    with open(filepath, "r") as file:
         return json.load(file)
 
 # Splash screen
